@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title  -->
+    <title>{% block title %} Kitap E ticare sitesi {% endblock %}</title>
+    <meta name="keywords" content="{% block keywords %} anasyafa anahtar kelimeler{% endblock %}">
+    <meta name="descprition" content="{% block description %} anasyafa kisa acıklamalar{% endblock %}">
+
+    <!-- Favicon  -->
+    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
+
+    <!-- Core Style CSS -->
+    <link rel="stylesheet" href="{% static 'css/core-style.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+
+    <!-- Responsive CSS -->
+    <link href="{% static 'css/responsive.cs' %}" rel="stylesheet">
+    {% block head %}{% endblock %}
+
+
+</head>
+<body>
+
+
+    {% block sidebar %}{% endblock %}
+
+
+
+<div id="wrapper">
+    {% include 'header.html' %}
+    {% block slider %}  {% endblock %}
+    {% block content %} {% endblock %}
+    {% include 'footer.html' %}
+    {% block foot %}{% endblock %}
+</div>
+
+</body>
+</html>

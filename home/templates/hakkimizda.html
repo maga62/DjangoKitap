@@ -1,0 +1,42 @@
+{% extends "homebase.html" %}
+
+{% block title %} HAKKIMIZDA-{{ setting.company }} {% endblock %}
+{% block keywords %}{{ setting.keywords }} {% endblock %}
+{% block description %}{{ setting.description }}  {% endblock %}
+
+{% block head %}
+<link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="breadcumb_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ol class="breadcrumb d-flex align-items-center">
+                    <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
+                    <li class="breadcrumb-item"><a href="/hakkimizda">Hakkımızda</a></li>
+                </ol>
+                <!-- btn -->
+            </div>
+        </div>
+    </div>
+</div>
+<section class="single_product_details_area section_padding_0_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <span>{{setting.aboutus|safe}}</span>
+            </div>
+            <br>
+            <br>
+            <span>{{setting.contact|safe}}</span>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

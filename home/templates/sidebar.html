@@ -1,0 +1,34 @@
+{% load static %}
+<div class="catagories-side-menu">
+    <!-- Close Icon -->
+    <div id="sideMenuClose">
+        <i class="ti-close"></i>
+    </div>
+
+    <!--  Side Nav  -->
+    <div class="nav-side-menu">
+        <div class="menu-list">
+            <h6>Categories</h6>
+
+            {% load mptt_tags %}
+            <ul class="navbar-nav animated" id="nav">
+                {% recursetree category %}
+                    <li class="dropdown side-dropdown">
+                        <a href="/category/{{node.slug}}" class="nav-link dropdown-toggle" href="/category/{{ node.id}}/{{ node.slug}}" id="karlDropdown"  {% if not node.is_leaf_node %}role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" {% endif %}>{{node.title}}</a>
+                        <div class="dropdown-menu" aria-labelledby="karlDropdown">
+                            {% if not node.is_leaf_node %}
+                            <ul class="list-links">
+
+
+                                    <li><a  href="/category/{{ node.id}}/{{ node.slug}}">{{ children }}  </a></li>
+
+
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </li>
+                {% endrecursetree %}
+            </ul>
+        </div>
+    </div>
+</div>

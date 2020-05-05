@@ -13,10 +13,17 @@ def index(request):
     setting=Setting.objects.get(pk=1)
     category = Category.objects.all()
     sliderdata = Kitap.objects.all()[:4]
+    dayproduct = Kitap.objects.all()[:3]
+    lastproduct = Kitap.objects.all().order_by('-id')[:4]
+    randomproduct = Kitap.objects.all().order_by('?')[:4]
     context={'setting':setting,
              'page':'home',
              'sliderdata':sliderdata,
-             'category': category,}
+             'category': category,
+             'dayproduct':dayproduct,
+             'lastproduct': lastproduct,
+             'randomproduct': randomproduct,
+             }
     return render(request, 'index.html', context)
 
 def hakkimizda(request):
@@ -49,5 +56,17 @@ def iletisim(request):
     setting=Setting.objects.get(pk=1)
     category = Category.objects.all()
     form=ContactFormu()
-    context={'setting':setting,'form':form,'category':category}
+    context={'setting':setting,'form':form,
+             'category':category}
     return render(request, 'iletisim.html', context)
+
+def category_products(request,id,slug):
+    category = Category.objects.all()
+    categorydata = Category.objects.get(pk=id)
+    products=Kitap.objects.filter(category_id=id)
+    context={'products':products,
+             'category':category,
+             'categorydata': categorydata
+
+             }
+    return render(request, 'products.html', context)

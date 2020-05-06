@@ -1,75 +1,116 @@
 {% load static %}
+
 <header class="header_area bg-img background-overlay-white" style="background-image: url({% static 'img/bg-img/header.jpg' %});">
     <!-- ****** Header Area Start ****** -->
     <header class="header_area">
         <!-- Top Header Area Start -->
         <div class="top_header_area">
             <div class="container h-100">
-                <div class="row h-100 align-items-center justify-content-end">
+                <div>
+                    <div class="header-social-area">
+                        <a href="#"><span class="karl-level">Share</span> <i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    </div>
 
-                    <div class="col-12 col-lg-7">
-                        <div class="top_single_area d-flex align-items-center">
-                            <!-- Logo Area -->
-                            <div class="top_logo">
-                                <a href="#"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
-                            </div>
-                            <!-- Cart & Menu Area -->
-                            <div class="header-cart-menu d-flex align-items-center ml-auto">
-                                <!-- Cart Area -->
-                                <div class="cart">
-                                    <a href="#" id="header-cart-btn" target="_blank"><span class="cart_quantity">2</span> <i class="ti-bag"></i> Your Bag $20</a>
-                                    <!-- Cart List Area Start -->
-                                    <ul class="cart-list">
-                                        <li>
-                                            <a href="#" class="image"><img src="{% static 'img/product-img/product-10.jpg' %}" class="cart-thumb" alt=""></a>
-                                            <div class="cart-item-desc">
-                                                <h6><a href="#">Women's Fashion</a></h6>
-                                                <p>1x - <span class="price">$10</span></p>
-                                            </div>
-                                            <span class="dropdown-product-remove"><i class="icon-cross"></i></span>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="image"><img src="{% static 'img/product-img/product-11.jpg' %}" class="cart-thumb" alt=""></a>
-                                            <div class="cart-item-desc">
-                                                <h6><a href="#">Women's Fashion</a></h6>
-                                                <p>1x - <span class="price">$10</span></p>
-                                            </div>
-                                            <span class="dropdown-product-remove"><i class="icon-cross"></i></span>
-                                        </li>
-                                        <li class="total">
-                                            <span class="pull-right">Total: $20.00</span>
-                                            <a href="cart.html" class="btn btn-sm btn-cart">Cart</a>
-                                            <a href="checkout-1.html" class="btn btn-sm btn-checkout">Checkout</a>
-                                        </li>
-                                    </ul>
+                    <div class="row h-100 align-items-center justify-content-end">
+                        <div class="col-12 col-lg-7">
+                            <div class="top_single_area d-flex align-items-center">
+                                <!-- Logo Area -->
+                                <div class="top_logo">
+                                    <a href="#"><img src="{% static 'img/core-img/19888947.png' %}" alt=""></a>
                                 </div>
-
-                                <div class="header-right-side-menu ml-15">
-                                    <a href="#" id="sideMenuBtn"><i class="ti-menu" aria-hidden="true"></i></a>
-
-
+                                <!-- Cart & Menu Area -->
+                                <div class="header-cart-menu d-flex align-items-center ml-auto">
+                                    <!-- Cart Area -->
+                                    <div class="cart">
+                                        <a href="#" id="header-cart-btn" target="_blank"><span class="cart_quantity">2</span> <i class="ti-bag"></i> Your Bag $20</a>
+                                        <!-- Cart List Area Start -->
+                                        <ul class="cart-list">
+                                            <li>
+                                                <a href="#" class="image"><img src="{% static 'img/product-img/product-10.jpg' %}" class="cart-thumb" alt=""></a>
+                                                <div class="cart-item-desc">
+                                                    <h6><a href="#">Women's Fashion</a></h6>
+                                                    <p>1x - <span class="price">$10</span></p>
+                                                </div>
+                                                <span class="dropdown-product-remove"><i class="icon-cross"></i></span>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="image"><img src="{% static 'img/product-img/product-11.jpg' %}" class="cart-thumb" alt=""></a>
+                                                <div class="cart-item-desc">
+                                                    <h6><a href="#">Women's Fashion</a></h6>
+                                                    <p>1x - <span class="price">$10</span></p>
+                                                </div>
+                                                <span class="dropdown-product-remove"><i class="icon-cross"></i></span>
+                                            </li>
+                                            <li class="total">
+                                                <span class="pull-right">Total: $20.00</span>
+                                                <a href="cart.html" class="btn btn-sm btn-cart">Cart</a>
+                                                <a href="checkout-1.html" class="btn btn-sm btn-checkout">Checkout</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="header-right-side-menu ml-15">
+                                        <a href="#" id="sideMenuBtn"><i class="ti-menu" aria-hidden="true"></i></a>
+                                    </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
+        <script>
 
+            $(function() {
+                $("#query").autocomplete({
+                    source: "/search_auto/",
+                    select: function (event, ui) { //item selected
+                        AutoCompleteSelectHandler(event, ui)
+                    },
+                    minLength: 2,
+                });
+            });
+
+            function AutoCompleteSelectHandler(event, ui)
+            {
+                var selectedObj = ui.item;
+            }
+
+        </script>
         <!-- Top Header Area End -->
         <div class="main_header_area">
             <div class="container h-100">
                 <div class="row h-100">
                     <div class="col-12 d-md-flex justify-content-between">
                         <!-- Header Social Area -->
-                        <div class="header-social-area">
-                            <a href="#"><span class="karl-level">Share</span> <i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                        </div>
+
+
+                            <div class="coupon-code-area mt-0">
+                                <form action="/search/" method="post">
+                                    {% csrf_token %}
+                                    <input id="query" type="text" name="query" placeholder="Enter Your Keyword"class="input-group">
+
+                                    {% load mptt_tags %}
+                                    <select name="catid" class="custom-select d-block w-100">
+                                        <option value="0">Kategoriler</option>
+                                        {% recursetree category %}
+                                        {% if node.is_leaf_node %}
+                                        <option value="{{ node.id }}">{{ node.title }}</option>
+                                        {% endif %}
+                                        {% if not node.is_leaf_node %}
+                                        <optgroup label="{{ node.title}}">
+                                            {{ children }}
+                                        </optgroup>
+                                        {% endif %}
+                                        {% endrecursetree %}
+                                    </select>
+
+                                    <button class="submit">Ara</button>
+                                </form>
+                            </div>
+
                         <!-- Menu Area -->
                         <div class="main-menu-area">
                             <nav class="navbar navbar-expand-lg align-items-start">
@@ -78,28 +119,45 @@
 
                                 <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
                                     <ul class="navbar-nav animated" id="nav">
-                                        <li class="nav-item active"><a class="nav-link" href="/">Anasayfa</a></li>
+                                        <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
                                         <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sayfalar</a>
+                                            <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
                                             <div class="dropdown-menu" aria-labelledby="karlDropdown">
-                                                <a class="dropdown-item" href="/">Anasayfa</a>
+                                                <a class="dropdown-item" href="/">Home</a>
                                                 <a class="dropdown-item" href="shop.html">Shop</a>
-                                                <a class="dropdown-item" href="product-details.html">Urun Detaylari</a>
+                                                <a class="dropdown-item" href="product-details.html">Product Details</a>
                                                 <a class="dropdown-item" href="cart.html">Cart</a>
                                                 <a class="dropdown-item" href="checkout.html">Checkout</a>
                                             </div>
                                         </li>
-
-                                        <li class="nav-item"><a class="nav-link" href="/referanslar">Referanslar</a></li>
                                         <li class="nav-item"><a class="nav-link" href="/hakkimizda">Hakkımızda</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/referanslar">Referanslar</a></li>
                                         <li class="nav-item"><a class="nav-link" href="/iletisim">İletİşİm</a></li>
                                     </ul>
                                 </div>
                             </nav>
                         </div>
                         <!-- Help Line -->
-                        <div class="help-line">
-                            <a href="tel:+346573556778"><i class="ti-headphone-alt"></i> +34 657 3556 778</a>
+                        <div class="">
+
+                            <ul class="navbar-nav animated" id="nav">
+                                {% if user.id is not None %}
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true">{{user.first_name}}</i> </a>
+
+
+                                    <div class="dropdown-menu" aria-labelledby="karlDropdown">
+                                        <a class="dropdown-item" href="/">Ana Sayfa</a>
+                                        <a class="dropdown-item" href="/login">LOG IN</a>
+                                        <a class="dropdown-item" href="/logout">LOG OUT</a>
+                                    </div>
+                                </li>
+                                {% else %}
+                                <li class="nav-item active"><a class="nav-link" href="/login/"><i class="fa fa-lock" aria-hidden="true"> Login</i></a></li>
+                                <li class="nav-item active"><a class="nav-link" href="/join/"><i class="fa fa-pencil-square" aria-hidden="true"> Join</i></a></li>
+                                {% endif %}
+                            </ul>
                         </div>
                     </div>
                 </div>

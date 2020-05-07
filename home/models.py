@@ -68,6 +68,7 @@ class ContactFormu(ModelForm):
 
 class UserProfile(models.Model):
     user =models.OneToOneField(User,on_delete=models.CASCADE)
+    email = models.CharField(blank=True, max_length=40)
     phone = models.CharField(blank=True, max_length=20)
     address = models.CharField(blank=True, max_length=20)
     city = models.CharField(blank=True, max_length=20)

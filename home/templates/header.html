@@ -8,7 +8,7 @@
         <div class="top_header_area">
             <div class="container h-100">
                 <div>
-                    <div class="header-social-area">
+                    <div class="header-social-area col-12 col-lg-7">
                         <a href="#"><span class="karl-level">Share</span> <i class="fa fa-pinterest" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
@@ -81,14 +81,14 @@
 
         </script>
         <!-- Top Header Area End -->
-        <div class="main_header_area">
-            <div class="container h-100">
-                <div class="row h-100">
-                    <div class="col-12 d-md-flex justify-content-between">
+        <div class="main_header_area col-12">
+            <div class="container h-100 col-11">
+                <div class="row h-100 ">
+                    <div class="col-12  d-md-flex justify-content-between">
                         <!-- Header Social Area -->
 
 
-                        <div class="coupon-code-area mt-0">
+                        <div class="coupon-code-area mt-0 col-4 ">
                             <form action="/search/" method="post">
                                 {% csrf_token %}
                                 <input id="query" type="text" name="query" placeholder="Enter Your Keyword"class="input search-input">
@@ -110,7 +110,7 @@
                         </div>
 
                         <!-- Menu Area -->
-                        <div class="main-menu-area">
+                        <div class="main-menu-area col-12 col-lg-7"  >
                             <nav class="navbar navbar-expand-lg align-items-start">
 
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="ti-menu"></i></span></button>
@@ -136,18 +136,19 @@
                             </nav>
                         </div>
                         <!-- Help Line -->
-                        <div class="">
+                        <div class="col-sm-2">
+                            {% if user.id is not None %}
 
                             <ul class="navbar-nav animated" id="nav">
-                                {% if user.id is not None %}
+
 
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true">{{user.first_name}}</i> </a>
+                                    <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true">{{user.first_name}}</image></i> </a>
 
 
                                     <div class="dropdown-menu" aria-labelledby="karlDropdown">
                                         <a class="dropdown-item" href="/">{{user.username}}</a>
-                                        <a class="dropdown-item" href="#">Tavsiyelerim</a>
+                                        <a class="dropdown-item" href="/user">My Account</a>
                                         <a class="dropdown-item" href="#">Urunlerim</a>
                                         <a class="dropdown-item" href="#">Kitap_Detay</a>
                                         <a class="dropdown-item" href="/login">LOG IN</a>

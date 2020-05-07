@@ -1,0 +1,76 @@
+{% extends "homebase.html" %}
+{% block title %}{{ profile.user_name }} Profile{% endblock %}
+{% block keywords %}{{ setting.keywords }} {% endblock %}
+{% block description %}{{ setting.description }}  {% endblock %}
+
+{% block head %}<link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />{% endblock %}
+{% block sidebar %}
+{% include "sidebar.html" %}
+{% endblock %}
+
+
+{% block content %}
+<div class="breadcumb_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ol class="breadcrumb d-flex align-items-center">
+                    <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
+                    <li class="breadcrumb-item"><a href="/iletisim">User Profile</a></li>
+                </ol>
+                <!-- btn -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="single_product_details_area section_padding_0_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div><h2>user Table </h2></div>
+
+
+                {% include "user_panel.html" %}
+
+            </div>
+
+            <div class="col-md-8">
+                <div><h2>user informations</h2></div>
+
+                <div class="order-details-confirmation">
+                    <div class="cart-page-heading">
+                        <h5>Your Order</h5>
+                        <p>The Details</p>
+                    </div>
+                    <tr >
+                        <th class="text-left"></th>
+                        <td >< img src="{{profile.image.url}}"  > </td>
+                    </tr>
+                    <ul class ="order-details-form mb-4">
+                        <li><span>Username </span>{{profile.user_name}}  </li>
+                        <li><span>email</span>{{profile.mail}} </li>
+                        <li><span>Phone</span>{{profile.phone}} </li>
+                        <li><span>Address</span>{{profile.address}} </li>
+                        <li><span>City</span>{{profile.city}} </li>
+                        <li><span>Country</span>{{profile.country}} </li>
+
+                    </ul>
+<!--                    <ul class="order-details-form mb-4">-->
+<!--                        <li><span>< img src="{{profile.image.url}}"></span> </li>-->
+<!--                        <li><span>{{profile.user_name}} </span> </li>-->
+<!--                        <li><span>{{profile.email}}</span> </li>-->
+<!--                        <li><span>{{profile.phone}}</span> </li>-->
+<!--                        <li><span>{{profile.address}}</span> </li>-->
+<!--                        <li><span>{{profile.city}}</span> </li>-->
+<!--                        <li><span>{{profile.country}}</span> </li>-->
+
+<!--                    </ul>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}

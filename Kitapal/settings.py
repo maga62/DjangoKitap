@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'user.apps.UserConfig',
     'home.apps.HomeConfig',
     'kitap.apps.KitapConfig',
     'django.contrib.admin',

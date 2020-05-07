@@ -156,6 +156,7 @@ def signup_view(request):
             login(request, user)
             return HttpResponseRedirect('/')
 
+
     form = SignUpForm()
     category = Category.objects.all()
     context = {'category': category,

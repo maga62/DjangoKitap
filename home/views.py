@@ -9,7 +9,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
-from home.forms import SearchForm
+from home.forms import SearchForm, SignUpForm
 from home.models import Setting, ContactFormu, ContactFormMessage
 from kitap.models import Kitap, Category, Images, Comment
 
@@ -143,3 +143,22 @@ def login_view(request):
     setting = Setting.objects.get(pk=1)
     context = {'category': category,'setting':setting,}
     return render(request, 'login.html', context)
+
+
+def signup_view(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate( username=username, password=password)
+            login(request, user)
+            return HttpResponseRedirect('/')
+
+    form = SignUpForm()
+    category = Category.objects.all()
+    context = {'category': category,
+               'form': form,
+               }
+    return render(request, 'signup.html', context)

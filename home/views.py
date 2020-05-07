@@ -1,7 +1,10 @@
+
 from unicodedata import category
 
 
 from django.contrib import messages
+from django.contrib.auth import logout, authenticate, login
+from django.core.serializers import json
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
@@ -98,11 +101,45 @@ def product_search(request):
         if form.is_valid():
             category=Category.objects.all()
             query=form.cleaned_data['query']
-
-
-            products=Kitap.objects.filter(title__icontains=query)
+            catid=form.cleaned_data['catid']
+            if catid == 0:
+                products=Kitap.objects.filter(title__icontains=query)
+            else:
+                products = Kitap.objects.filter(title__icontains=query,category_id=catid)
             context = {'products': products,
                        'category': category,
                        }
             return render(request, 'products_search.html', context)
     return HttpResponseRedirect('/')
+def product_search_auto(request):
+    if request.is_ajax():
+        q=request.GET.get('term','')
+        product=Kitap.objects.filter(title__icontains=q)
+        results=[]
+        for rs in product:
+            product_json={}
+            product_json=rs.title
+            results.append(product_json)
+        data=json.dumps(results)
+    else:
+        data='fail'
+    mimetype='application/json'
+    return HttpResponse(data,mimetype)
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('/')
+        else:
+            messages.warning(request, "Login Hatası !  Kullanıcı adı veya şifre yanlış. ")
+            return HttpResponseRedirect('/login')
+    category = Category.objects.all()
+    setting = Setting.objects.get(pk=1)
+    context = {'category': category,'setting':setting,}
+    return render(request, 'login.html', context)

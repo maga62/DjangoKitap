@@ -5,6 +5,7 @@ from django.db import models
 
 # Create your models here.
 from django.forms import ModelForm
+from django.urls import reverse
 from django.utils.safestring import mark_safe
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
@@ -20,7 +21,7 @@ class Category(MPTTModel):
     description = models.CharField(max_length=255)
     image=models.ImageField(blank=True,upload_to='images/')
     status=models.CharField(max_length=10,choices=STATUS)
-    slug=models.SlugField()
+    slug=models.SlugField(null=False, unique=True)
     parent=TreeForeignKey('self',blank=True,null=True,related_name='children',on_delete=models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
@@ -40,6 +41,9 @@ class Category(MPTTModel):
         return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
     image_tag.short_decription = 'Image'
 
+    def get_absolute_url(self):
+        return reverse('category_detail',kwargs={'slug':self.slug})
+
 class Kitap(models.Model):
     STATUS=(
         ('True', 'Evet'),
@@ -58,7 +62,7 @@ class Kitap(models.Model):
     stok_durum= models.IntegerField()
     detail=RichTextUploadingField()
     status=models.CharField(max_length=10,choices=STATUS)
-    slug=models.SlugField()
+    slug=models.SlugField(null=False, unique=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
 
@@ -67,6 +71,9 @@ class Kitap(models.Model):
     def image_tag(self):
         return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
     image_tag.short_decription = 'Image'
+
+    def get_absolute_url(self):
+        return reverse('product_detail',kwargs={'slug':self.slug})
 
 class Images(models.Model):
     kitap=models.ForeignKey(Kitap,on_delete=models.CASCADE)

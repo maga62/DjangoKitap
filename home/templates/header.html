@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <header class="header_area bg-img background-overlay-white" style="background-image: url({% static 'img/bg-img/header.jpg' %});">
     <!-- ****** Header Area Start ****** -->
     <header class="header_area">
@@ -87,29 +88,26 @@
                         <!-- Header Social Area -->
 
 
-                            <div class="coupon-code-area mt-0">
-                                <form action="/search/" method="post">
-                                    {% csrf_token %}
-                                    <input id="query" type="text" name="query" placeholder="Enter Your Keyword"class="input-group">
+                        <div class="coupon-code-area mt-0">
+                            <form action="/search/" method="post">
+                                {% csrf_token %}
+                                <input id="query" type="text" name="query" placeholder="Enter Your Keyword"class="input search-input">
 
-                                    {% load mptt_tags %}
-                                    <select name="catid" class="custom-select d-block w-100">
-                                        <option value="0">Kategoriler</option>
-                                        {% recursetree category %}
-                                        {% if node.is_leaf_node %}
-                                        <option value="{{ node.id }}">{{ node.title }}</option>
-                                        {% endif %}
-                                        {% if not node.is_leaf_node %}
-                                        <optgroup label="{{ node.title}}">
-                                            {{ children }}
-                                        </optgroup>
-                                        {% endif %}
-                                        {% endrecursetree %}
-                                    </select>
-
-                                    <button class="submit">Ara</button>
-                                </form>
-                            </div>
+                                {% load mptt_tags %}
+                                <select name="catid" class="input search-categories">
+                                    <option value="0">category</option>
+                                {% recursetree category %}
+                                    {% if node.is_leaf_node %}<option value="{{ node.id }}">{{ node.title }}</option>{% endif %}
+                                    {% if not node.is_leaf_node %}
+                                    <optgroup label="{{ node.title}}">
+                                        {{ children }}
+                                    </optgroup>
+                                    {% endif %}
+                                    {% endrecursetree %}
+                                </select>
+                                <button class="search-btn">Ara</button>
+                            </form>
+                        </div>
 
                         <!-- Menu Area -->
                         <div class="main-menu-area">
@@ -119,18 +117,18 @@
 
                                 <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
                                     <ul class="navbar-nav animated" id="nav">
-                                        <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+                                        <a class="list-group-item" href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
                                             <div class="dropdown-menu" aria-labelledby="karlDropdown">
-                                                <a class="dropdown-item" href="/">Home</a>
-                                                <a class="dropdown-item" href="shop.html">Shop</a>
-                                                <a class="dropdown-item" href="product-details.html">Product Details</a>
+                                                <a class="list-group-item" href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
+                                                <a class="list-group-item" href="products.html"><i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp; kitaplarim </a>
+                                                <a class="list-group-item" href="product-details.html"><i class="fa fa-product-hunt" aria-hidden="true"></i>&nbsp;Details</a>
                                                 <a class="dropdown-item" href="cart.html">Cart</a>
                                                 <a class="dropdown-item" href="checkout.html">Checkout</a>
                                             </div>
                                         </li>
-                                        <li class="nav-item"><a class="nav-link" href="/hakkimizda">Hakkımızda</a></li>
+                                        <a class="list-group-item" href="/hakkimizda"><i class="fa fa-address-card-o" aria-hidden="true"></i>&nbsp; Hakkimizda</a>
                                         <li class="nav-item"><a class="nav-link" href="/referanslar">Referanslar</a></li>
                                         <li class="nav-item"><a class="nav-link" href="/iletisim">İletİşİm</a></li>
                                     </ul>
@@ -148,7 +146,10 @@
 
 
                                     <div class="dropdown-menu" aria-labelledby="karlDropdown">
-                                        <a class="dropdown-item" href="/">Ana Sayfa</a>
+                                        <a class="dropdown-item" href="/">{{user.username}}</a>
+                                        <a class="dropdown-item" href="#">Tavsiyelerim</a>
+                                        <a class="dropdown-item" href="#">Urunlerim</a>
+                                        <a class="dropdown-item" href="#">Kitap_Detay</a>
                                         <a class="dropdown-item" href="/login">LOG IN</a>
                                         <a class="dropdown-item" href="/logout">LOG OUT</a>
                                     </div>

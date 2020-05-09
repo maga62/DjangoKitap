@@ -40,6 +40,7 @@
                             <td><h4 class="title"> <a href="/kitap/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a></h4></td>
                             <td><a href="/category/{{ rs.category_id }}/{{ rs.category.slug }}" > {{ rs.category }}</a></td>
                             <td><h3>{{ rs.fiyat }}</h3></td>
+                            <td><h3>{{ rs.stok_durum }}</h3></td>
 
                         </tr>
                     {% endfor %}

@@ -103,7 +103,7 @@
                         <h4 class="product-price">Fiyat: {{ rs.fiyat }}</h4>
                         <a href="/kitap/{{ rs.id }}/{{ rs.slug }}"><p>{{ rs.title }}</p></a>
                         <!-- Add to Cart -->
-                        <a href="/addtochart/{{ rs.id }}" class="add-to-cart-btn">SEPETE EKLE</a>
+                        <a href="/order/addtocart/{{rs.id}}" class="add-to-cart-btn">SEPETE EKLE</a>
                     </div>
                 </div>
             {% endfor %}

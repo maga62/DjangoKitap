@@ -1,0 +1,64 @@
+{% extends "homebase.html" %}
+{% block title %}{{ profile.user_name }} {% endblock %}
+{% block keywords %}{{ setting.keywords }} {% endblock %}
+{% block description %}{{ setting.description }}  {% endblock %}
+
+{% block head %}<link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />{% endblock %}
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="breadcumb_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <ol class="breadcrumb d-flex align-items-center">
+                        <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
+                        <li class="breadcrumb-item"><a >User Profile update </a></li>
+                    </ol>
+                    <!-- btn -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="single_product_details_area section_padding_0_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-3 col-md-3">
+                    <div class="row">
+                        <div class="col-md-12 mb-5">
+                            {% include "user_panel.html" %}
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 col-md-9">
+                    <div><h3>User Information</h3></div>
+
+                    <div class="cart-table clearfix">
+                        <div class="media">
+                            <img src="{{user.userprofile.image.url}}" style="height:150px;border-radius:45px">
+                        </div>
+                        <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                            <fieldset class="from-group">
+                                {{ user_form.as_p }}
+                                {{ profile_form.as_p }}
+                            </fieldset>
+                            <div class="form-group">
+                                <button class="btn btn_outline-info" type="submit">Update</button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

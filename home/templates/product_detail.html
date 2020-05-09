@@ -68,6 +68,13 @@
 
                     <div class="col-12 col-md-6">
                         <div class="single_product_desc">
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}" roles="alert">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                            {% endif %}
 
                             <h4 class="title">{{product.title}}</h4>
 
@@ -92,10 +99,12 @@
 
 
                             <!-- Add to Cart Form -->
-                            <form class="cart clearfix mb-50 d-flex" method="post">
+                            <form action="/order/addtocart/{{product.id}}" class="cart clearfix mb-50 d-flex" method="post">
+
                                 <div class="quantity">
+                                    {% csrf_token %}
                                     <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                    <input type="number" class="qty-text" id="qty" step="1" min="0" max="{{ product.stok_durum }}" name="quantity" value="1">
+                                    <input type="number"  class="qty-text" id="qty" step="1" min="0" max="{{ product.stok_durum }}" name="quantity" value="1">
                                     <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
                                 </div>
                                 <button type="submit" name="addtocart" value="5" class="btn cart-submit d-block">SEPETE EKLE</button>
@@ -174,6 +183,8 @@
                                                         <div><h5>YORUMLAR</h5></div>
                                                         {% for rs in comments %}
                                                         <div class="single_product_desc">
+
+
                                                             <div><h4 class="title">{{ rs.users.first_name }}</h4>
                                                             </div>
                                                             <div><h9 class="title">{{ rs.created_at }}</h9>

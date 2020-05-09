@@ -12,15 +12,19 @@ from django.shortcuts import render
 from home.forms import SearchForm, SignUpForm
 from home.models import Setting, ContactFormu, ContactFormMessage
 from kitap.models import Kitap, Category, Images, Comment
+from order.models import ShopCart
 
 
 def index(request):
+    current_user = request.user
     setting=Setting.objects.get(pk=1)
     category = Category.objects.all()
     sliderdata = Kitap.objects.all()[:4]
     dayproduct = Kitap.objects.all()[:3]
     lastproduct = Kitap.objects.all().order_by('-id')[:4]
     randomproduct = Kitap.objects.all().order_by('?')[:4]
+
+    request.session['cart_items'] = ShopCart.objects.filter(user_id=current_user.id).count()
     context={'setting':setting,
              'page':'home',
              'sliderdata':sliderdata,

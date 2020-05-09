@@ -1,0 +1,119 @@
+{% extends "homebase.html" %}
+
+{% block title %} Shop Cart {{ setting.company }} {% endblock %}
+{% block keywords %}{{ setting.keywords }} {% endblock %}
+{% block description %}{{ setting.description }}  {% endblock %}
+
+{% block head %}
+<link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar.html" %}
+{% endblock %}
+
+
+{% block content %}
+<div class="breadcumb_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ol class="breadcrumb d-flex align-items-center">
+                    <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
+                    <li class="breadcrumb-item"><a href="/Shopcart_products">Shop Cart</a></li>
+                </ol>
+                <!-- btn -->
+            </div>
+        </div>
+    </div>
+</div>
+<section class="single_product_details_area section_padding_0_100">
+
+    <div class="cart_area section_padding_100 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="cart-table clearfix">
+                        <h3>Sepet Ürün Listesi</h3>
+                        <table class="table table-responsive">
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}" roles="alert">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                            <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Toplam urun fiyati</th>
+                                <th>Total</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for rs in shopcart %}
+                            <tr>
+                                <td class="cart_product_img d-flex align-items-center">
+                                    <img src="{{rs.product.image.url}}" alt="Product" style="width: 450px; height: 250px;"></a>
+                                    <h6>{{rs.product}}</h6>
+                                </td>
+                                <td class="price"><span>{{rs.product.fiyat}}</span></td>
+                                <td class="qty">{{ rs.quantity }}
+                                </td>
+                                <td class="total_price"><span>{{rs.stok_durum}}</span></td>
+                                <td class="total_price"><span>{{total}}</span></td>
+
+                                <td class="qty"><a href="/order/deletefromcart/{{ rs.id }}" class="button" onclick="return confirm('Ürün silinecektir.Emin misniz?')"><button type="delete" class="btn cart-submit d-block">Sil</button></a></td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <div class="cart-footer d-flex col-12">
+
+                        <div class="back-to-shop w-50">
+
+                            <a href="/">Continue shooping</a>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="cart_area section_padding_100 clearfix">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div class="cart-page-heading">
+                                <h5>Cart total</h5>
+                                <p>Final info</p>
+                            </div>
+
+
+                            <ul class="cart-total-chart">
+                                <li><span>Subtotal</span> <span>{{rs.title}}</span></li>
+                                <li><span>Shipping</span> <span>Free</span></li>
+                                <li><span><strong>Total</strong></span> <span><strong>{{total}}</strong></span></li>
+                            </ul>
+                            <a href="/order/orderproduct" class="btn karl-checkout-btn">Place Order</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</section>
+{% endblock %}

@@ -1,0 +1,229 @@
+{% extends "homebase.html" %}
+{% block title %}ORDER PLACE{{ setting.company }} {% endblock %}
+{% block keywords %}{{ categorydata.keywords }} {% endblock %}
+{% block description %}{{ categorydata.description }}  {% endblock %}
+
+{% block head %}<link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />{% endblock %}
+{% block sidebar %}
+{% include "sidebar.html" %}
+{% endblock %}
+
+
+{% block content %}
+<div class="breadcumb_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ol class="breadcrumb d-flex align-items-center">
+                    <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
+                    <li class="breadcrumb-item"><a >siparis formu </a></li>
+                </ol>
+                <!-- btn -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="checkout_area section_padding_5">
+    <div class="container">
+        <div class="row">
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                <div class="col-12 col-md-6">
+
+                    <div class="checkout_details_area mt-50 clearfix">
+
+
+                        <div class="cart-page-heading">
+                            <h5>Billing Address</h5>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="first_name">First Name <span>*</span></label>
+                                <input type="text" class="input" id="first_name" value="{{user.first_name}}" >
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="last_name">Last Name <span>*</span></label>
+                                <input type="text" class="input" id="last_name" value="{{user.last_name}}" >
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="number">Phone No <span>*</span></label>
+                                <input type="number" class="input" name="phone" min="0" value="{{ profile.phone}}">
+                            </div>
+                            <!-- <div class="col-12 mb-3">
+                                 <label for="company">Company Name</label>
+                                 <input type="text" class="form-control" id="company" value="">
+                             </div> -->
+
+                            <div class="col-12 mb-3">
+                                <label for="street_address">Address <span>*</span></label>
+                                <input type="text" class="form-control mb-3" id="street_address" value="{{profile.address}}">
+                                <!--<input type="text" class="form-control" id="street_address2" value="">-->
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="city">{{profile.city}} <span>*</span></label>
+                                <select class="custom-select d-block w-100" id="city">
+                                    <option value="{{profile.city }}" selected>{{ profile.city }}</option>
+                                    <option value="Istanbul">Istanbul</option>
+                                    <option value="Ankara">Ankara</option>
+                                    <option value="Karabuk">Karabuk</option>
+                                    <option value="Manisa">Manisa</option>
+                                    <option value="Antalya">Antalya</option>
+                                    <option value="izmir">izmir</option>
+                                    <option value="Bursa ">Bursa</option>
+                                    <option value="Trabzon">Trabzon</option>
+                                </select>
+                            </div>
+                            <!-- <div class="col-12 mb-3">
+                                 <label for="postcode">Postcode <span>*</span></label>
+                                 <input type="text" class="form-control" id="postcode" value="">
+                             </div>-->
+                            <div class="col-12 mb-3">
+                                <label for="country">Country <span>*</span></label>
+                                <input type="text" class="form-control" id="country" value="{{profile.country}}">
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="col-12 col-md-6">
+
+                    <div class="checkout_details_area mt-50 clearfix">
+
+
+                        <div class="cart-page-heading">
+                            <h5>Payment Informations</h5>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="first_name"> Total <span>*</span></label>
+                                <input type="text" class="form-control" id="total" value="{{total}}" >
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="last_name">Credit Card Holder<span>*</span></label>
+                                <input type="text" class="form-control" id="holder" value="{{user.last_name}}" >
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="Credit">Credit cart number <span>*</span></label>
+                                <input type="number" class="form-control" name="number" value="">
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="street_address">Credit exsept date/year <span>*</span></label>
+                                <input type="text" class="form-control mb-3"placeholder="mm/yy">
+                                <!--<input type="text" class="form-control" id="street_address2" value="">-->
+                            </div>
+
+                            <div class="col-12 mb-3">
+                                <label for="country">security number <span>*</span></label>
+                                <input type="text" class="input" name="secnumber" value="">
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+                <button type="submit" class="btn karl-checkout-btn">Siparişi Tamamla</button>
+
+
+            </form>
+            <section class="single_product_details_area section_padding_0_100">
+
+                <div class="cart_area section_padding_100 clearfix">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="cart-table clearfix">
+                                    <h3>Sepet Ürün Listesi</h3>
+                                    <table class="table table-responsive">
+                                        {% if messages %}
+                                        {% for message in messages %}
+                                        <div class="alert alert-{{ message.tags }}" roles="alert">
+                                            {{ message }}
+                                        </div>
+                                        {% endfor %}
+                                        {% endif %}
+                                        <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Toplam urun fiyati</th>
+                                            <th>Total</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for rs in shopcart %}
+                                        <tr>
+                                            <td class="cart_product_img d-flex align-items-center">
+                                                <img src="{{rs.product.image.url}}" alt="Product" style="width: 450px; height: 250px;"></a>
+                                                <h6>{{rs.product}}</h6>
+                                            </td>
+                                            <td class="price"><span>{{rs.product.fiyat}}</span></td>
+                                            <td class="qty">{{ rs.quantity }}
+                                            </td>
+                                            <td class="total_price"><span>{{rs.stok_durum}}</span></td>
+                                            <td class="total_price"><span>{{total}}</span></td>
+
+                                            <td class="qty"><a href="/order/deletefromcart/{{ rs.id }}" class="button" onclick="return confirm('Ürün silinecektir.Emin misniz?')"><button type="delete" class="btn cart-submit d-block">Sil</button></a></td>
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                                <div class="cart-footer d-flex col-12">
+
+                                    <div class="back-to-shop w-50">
+
+                                        <a href="/">Continue shooping</a>
+                                    </div>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="cart_area section_padding_100 clearfix">
+                            <div class="container">
+                                <div class="row">
+
+                                    <div class="col-12">
+                                        <div class="cart-page-heading">
+                                            <h5>Cart total</h5>
+                                            <p>Final info</p>
+                                        </div>
+
+
+                                        <ul class="cart-total-chart">
+                                            <li><span>Subtotal</span> <span>{{rs.title}}</span></li>
+                                            <li><span>Shipping</span> <span>Free</span></li>
+                                            <li><span><strong>Total</strong></span> <span><strong>{{total}}</strong></span></li>
+                                        </ul>
+                                        <a href="/order/orderproduct" class="btn karl-checkout-btn">Proceed to checkout</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+</section>
+{% endblock %}

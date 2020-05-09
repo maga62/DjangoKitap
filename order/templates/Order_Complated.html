@@ -1,0 +1,41 @@
+{% extends "homebase.html" %}
+{% block title %}Shop Cart {% endblock %}
+{% block keywords %}{{ categorydata.keywords }} {% endblock %}
+{% block description %}{{ categorydata.description }}  {% endblock %}
+
+{% block head %}<link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />{% endblock %}
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="breadcumb_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <ol class="breadcrumb d-flex align-items-center">
+                        <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
+                                            </ol>
+                    <!-- btn -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="single_product_details_area section_padding_0_100">
+        <div class="container">
+            <div class="row">
+                 <div class="col-12 col-md-6">
+                    <div class="single_product_desc">
+
+                <h6 class="title">Sevgili {{ user.first_name}}</h6><br>
+                <h4>Sipariş Kodu: {{ordercode}}</h4>
+                <h6>Ödünç alma işlemin başarı ile gerçekleştirmiştir.</h6>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

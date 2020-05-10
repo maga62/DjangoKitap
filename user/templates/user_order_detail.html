@@ -1,0 +1,129 @@
+{% extends "homebase.html" %}
+{% block title %}{{ profile.user_name }} Order Detail {% endblock %}
+{% block keywords %}{{ setting.keywords }} {% endblock %}
+{% block description %}{{ setting.description }}  {% endblock %}
+
+{% block head %}<link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />{% endblock %}
+{% block sidebar %}
+{% include "sidebar.html" %}
+{% endblock %}
+
+
+{% block content %}
+<div class="breadcumb_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ol class="breadcrumb d-flex align-items-center">
+                    <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
+                    <li class="breadcrumb-item"><a href="/user/user_profile"> Order Detail </a></li>
+                </ol>
+                <!-- btn -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="single_product_details_area section_padding_0_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-3 col-md-3">
+                <div class="row">
+                    <div class="col-md-12 mb-5">
+                        {% include "user_panel.html" %}
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-12 col-md-9">
+                <div><h3> ORDERS SHIPPING INFORMATIONS </h3></div>
+                <div class="col-12 ">
+                <table class="table tab-content">
+
+                    <tr>
+                        <th class="text-left">Name </th>
+                        <td class="text">{{ order.first_name }}</td>
+
+                    </tr>
+                    <tr>
+                        <th class="text-left">Email</th>
+                        <td class="text">{{ order.user.email }}</td>
+                    </tr>
+                    <tr>
+                        <th class="text-left">Phone</th>
+                        <td class="text">{{ order.phone }}</td>
+                    </tr>
+                    <tr>
+                        <th class="text-left">Address</th>
+                        <td class="price">{{ order.address }}</td>
+                    </tr>
+                    <tr>
+                        <th class="text-left">City</th>
+                        <td class="price">{{ order.city }}</td>
+                    </tr>
+                    <tr>
+                        <th class="text-left">Country</th>
+                        <td class="text">{{ order.user.country }}</td>
+                    </tr>
+                    <tr>
+                        <th class="text-left">STATUS:</th>
+                        <td class="price">{{ order.status }}</td>
+                    </tr>
+                    <tr>
+                        <th class="text-left">DATE: </th>
+                        <td class="price">{{ order.created_at }}</td>
+                    </tr>
+                    <tr>
+                        <th class="text-left">Shipping Inf</th>
+                        <td class="price">{{ order.adminnote }}</td>
+                    </tr>
+
+
+
+                </table>
+                </div>
+                <div class="col-12 ">
+                <div class="cart-table clearfix">
+                    <table class="table tab-conten">
+
+                        <tr>
+                            <th class="text-left"><span></span>ID</span><hr> </th>
+                            <th class="text-left"><span>Kitap name </span><hr></th>
+                            <th class="text-left"><span>Fiyat </span><hr></th>
+                            <th class="text-left"><span>Quantity</span><hr></th>
+                            <th class="text-left"><span>amount</span><hr></th>
+                            <th class="text-left"><span>Status</span><hr></th>
+                            <th class="text-left"><span>date</span><hr></th>
+
+
+
+                        </tr>
+                        {% for rs in orderitems %}
+                        <tr>
+                            <td class="text-left">
+                                <a href="/kitap/{{rs.product_id}}/{{rs.product.slug}}">
+                                    <img src="{{rs.product.image.url}}" > <hr>
+                                </a>
+                            </td>
+                            <td class="text-left">{{ rs.product.title}} </td>
+                            <td class="text-left"><span>{{ rs.fiyat}}</span><hr> </td>
+                            <td class="text-left"><span>{{ rs.quantity}} </span><hr></td>
+                            <td class="text-left"><span>{{ rs.stok_durum}} </span><hr></td>
+                            <td class="text-left"><span>{{ rs.status}} </span><hr></td>
+                            <td class="text-left"><span>{{ rs.created_at}} </span><hr></td>
+
+                        </tr>
+                        {% endfor %}
+
+                    </table>
+
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

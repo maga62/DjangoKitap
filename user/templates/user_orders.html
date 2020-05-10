@@ -1,0 +1,78 @@
+{% extends "homebase.html" %}
+{% block title %}{{ profile.user_name }} Order List {% endblock %}
+{% block keywords %}{{ setting.keywords }} {% endblock %}
+{% block description %}{{ setting.description }}  {% endblock %}
+
+{% block head %}<link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />{% endblock %}
+{% block sidebar %}
+{% include "sidebar.html" %}
+{% endblock %}
+
+
+{% block content %}
+<div class="breadcumb_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ol class="breadcrumb d-flex align-items-center">
+                    <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
+                    <li class="breadcrumb-item"><a href="/user/user_profile">User Orders </a></li>
+                </ol>
+                <!-- btn -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="single_product_details_area section_padding_0_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-3 col-md-3">
+                <div class="row">
+                    <div class="col-md-12 mb-5">
+                        {% include "user_panel.html" %}
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-12 col-md-9">
+                <div><h3>User ORDERS LIST </h3></div>
+
+                <div class="cart-table clearfix">
+                    <table class="table table-responsive">
+
+                        <tr>
+                            <th class="text-left"><span></span>ID</span><hr> </th>
+                            <th class="text-left"><span>First name </span><hr></th>
+                            <th class="text-left"><span>Last name </span><hr></th>
+                            <th class="text-left"><span>total</span><hr></th>
+                            <th class="text-left"><span>status</span><hr></th>
+                            <th class="text-left"><span>date</span><hr></th>
+                            <th class="text-left"><span>Detail</span><hr></th>
+
+
+                        </tr>
+                        {% for rs in orders %}
+                        <tr>
+                            <td class="text-left"><span>{{ rs.id}}</span><hr></td>
+                            <td class="text-left"><span>{{ rs.first_name}} </span><hr></td>
+                            <td class="text-left"><span>{{ rs.last_name}}</span><hr> </td>
+                            <td class="text-left"><span>{{ rs.total}} </span><hr></td>
+                            <td class="text-left"><span>{{ rs.status}} </span><hr></td>
+                            <td class="text-left"><span>{{ rs.created_at}} </span><hr></td>
+                            <td class="text-left"><a class="btn karl-checkout-btn" href="/user/orderdetail/{{ rs.id}}" >DETAY</a> </td>
+                        </tr>
+                        {% endfor %}
+
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

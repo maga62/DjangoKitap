@@ -5,87 +5,90 @@
 
 {% block head %}<link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />{% endblock %}
 {% block sidebar %}
-    {% include "sidebar.html" %}
+{% include "sidebar.html" %}
 {% endblock %}
 
 
 {% block content %}
-    <div class="breadcumb_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <ol class="breadcrumb d-flex align-items-center">
-                        <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
-                        <li class="breadcrumb-item"><a href="/user/user_profile">User Profile</a></li>
-                    </ol>
-                    <!-- btn -->
-                </div>
+<div class="breadcumb_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ol class="breadcrumb d-flex align-items-center">
+                    <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
+                    <li class="breadcrumb-item"><a href="/user/user_profile">User Profile</a></li>
+                </ol>
+                <!-- btn -->
             </div>
         </div>
     </div>
+</div>
 
-    <section class="single_product_details_area section_padding_0_100">
-        <div class="container">
-            <div class="row">
-                <div class="col-3 col-md-3">
-                    <div class="row">
-                        <div class="col-md-12 mb-5">
-                            {% include "user_panel.html" %}
+<section class="single_product_details_area section_padding_0_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-3 col-md-3">
+                <div class="row">
+                    <div class="col-md-12 mb-5">
+                        {% include "user_panel.html" %}
 
-                        </div>
                     </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-12 col-md-9">
+                <div><h3>User Information</h3></div>
+
+                <div class="cart-table clearfix">
+                    <table class="table table-responsive">
+
+                        <tr>
+                            <th class="text-left"></th>
+                            <td class="cart_product_img d-flex align-items-center">
+                                <a href="#"><img src="{{profile.image.url}}" alt="Product"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">Name Surname</th>
+                            <td class="price"><span>{{ profile.user.first_name }} {{ profile.user.last_name }}</span><hr></td>
+
+                        </tr>
+                        <tr>
+                            <th class="text-left">Email</th>
+                            <td class="price"><span>{{ profile.user.email }}</span><hr></td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">Phone</th>
+                            <td class="price"><span>{{ profile.phone }}</span><hr></td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">Address</th>
+                            <td class="price"><span>{{ profile.address }}</span><hr></td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">City</th>
+                            <td class="price"><span>{{ profile.city }}</span><hr></td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">Country</th>
+                            <td class="price"><span>{{ profile.country }}</span><hr></td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">
+                                <a href="/user/update" class="btn karl-checkout-btn">UPDATE PROFILE</a>
+                            </th>
+                            <th class="text-left">
+                                <a href="/user/password" class="btn karl-checkout-btn">CHANGE PASSWORD</a>
+                            </th>
+                        </tr>
+                    </table>
 
                 </div>
 
-
-                <div class="col-12 col-md-9">
-                    <div><h3>User Information</h3></div>
-
-                    <div class="cart-table clearfix">
-                        <table class="table table-responsive">
-                            <tr>
-                                <th class="text-left">
-                                    <a href="/user/update" class="primary-btn">UPDATE PROFILE</a>
-                                    <a href="/user/password" class="primary-btn">CHANGE PASSWORD</a>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th class="text-left"></th>
-                                <td class="cart_product_img d-flex align-items-center">
-                                    <a href="#"><img src="{{profile.image.url}}" alt="Product"></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="text-left">Name Surname</th>
-                                <td class="price"><span>{{ profile.user.first_name }} {{ profile.user.last_name }}</span><hr></td>
-
-                            </tr>
-                            <tr>
-                                <th class="text-left">Email</th>
-                                <td class="price"><span>{{ profile.user.email }}</span><hr></td>
-                            </tr>
-                            <tr>
-                                <th class="text-left">Phone</th>
-                                <td class="price"><span>{{ profile.phone }}</span><hr></td>
-                            </tr>
-                            <tr>
-                                <th class="text-left">Address</th>
-                                <td class="price"><span>{{ profile.address }}</span><hr></td>
-                            </tr>
-                            <tr>
-                                <th class="text-left">City</th>
-                                <td class="price"><span>{{ profile.city }}</span><hr></td>
-                            </tr>
-                            <tr>
-                                <th class="text-left">Country</th>
-                                <td class="price"><span>{{ profile.country }}</span><hr></td>
-                            </tr>
-                        </table>
-
-                    </div>
-
-                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 {% endblock %}

@@ -43,15 +43,15 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="first_name">First Name <span>*</span></label>
-                                <input type="text" class="input" id="first_name" value="{{user.first_name}}" >
+                                <input type="text" class="form-control" name="first_name" value="{{user.first_name}}" >
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="last_name">Last Name <span>*</span></label>
-                                <input type="text" class="input" id="last_name" value="{{user.last_name}}" >
+                                <input type="text" class="form-control" name="last_name"  value="{{user.last_name}}" >
                             </div>
                             <div class="col-12 mb-3">
-                                <label for="number">Phone No <span>*</span></label>
-                                <input type="number" class="input" name="phone" min="0" value="{{ profile.phone}}">
+                                <label for="phone_number">Phone No <span>*</span></label>
+                                <input type="text" class="form-control" name="phone" min="0" value="{{ profile.phone}}">
                             </div>
                             <!-- <div class="col-12 mb-3">
                                  <label for="company">Company Name</label>
@@ -60,12 +60,12 @@
 
                             <div class="col-12 mb-3">
                                 <label for="street_address">Address <span>*</span></label>
-                                <input type="text" class="form-control mb-3" id="street_address" value="{{profile.address}}">
+                                <input type="text" class="form-control mb-3" name="address" value="{{profile.address}}">
                                 <!--<input type="text" class="form-control" id="street_address2" value="">-->
                             </div>
                             <div class="col-12 mb-3">
-                                <label for="city">{{profile.city}} <span>*</span></label>
-                                <select class="custom-select d-block w-100" id="city">
+                                <label for="city">City<span>*</span></label>
+                                <select class="custom-select d-block w-100" name ="city">
                                     <option value="{{profile.city }}" selected>{{ profile.city }}</option>
                                     <option value="Istanbul">Istanbul</option>
                                     <option value="Ankara">Ankara</option>
@@ -83,7 +83,7 @@
                              </div>-->
                             <div class="col-12 mb-3">
                                 <label for="country">Country <span>*</span></label>
-                                <input type="text" class="form-control" id="country" value="{{profile.country}}">
+                                <input type="text" class="form-control" name="country" value="{{profile.country}}">
                             </div>
 
                         </div>
@@ -105,12 +105,12 @@
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="first_name"> Total <span>*</span></label>
-                                <input type="text" class="form-control" id="total" value="{{total}}" >
+                                <label for="total"> Total <span>*</span></label>
+                                <input type="text" class="form-control" name ="total" value="{{total}}" >
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="last_name">Credit Card Holder<span>*</span></label>
-                                <input type="text" class="form-control" id="holder" value="{{user.last_name}}" >
+                                <input type="text" class="form-control" name ="last_name" value="{{user.last_name}}" >
                             </div>
                             <div class="col-12 mb-3">
                                 <label for="Credit">Credit cart number <span>*</span></label>

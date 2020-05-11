@@ -167,3 +167,15 @@ def signup_view(request):
                'form': form,
                }
     return render(request, 'signup.html', context)
+
+
+def kitaplar(request):
+    setting = Setting.objects.get(pk=1)
+    category = Category.objects.all()
+    products = Kitap.objects.all()
+    context = {
+        'setting': setting,
+        'products':products,
+        'category': category,
+    }
+    return render(request, 'kitapmenu.html', context)

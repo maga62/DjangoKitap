@@ -30,6 +30,7 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('kitap/', include('kitap.urls')),
     path('admin/', admin.site.urls),
+    path('kitaplar/',views.kitaplar, name='kitaplar'),
 
 
 

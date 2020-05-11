@@ -39,7 +39,7 @@ class Category(MPTTModel):
 
     def image_tag(self):
         return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
-    image_tag.short_decription = 'Image'
+    image_tag.short_description = 'Image'
 
     def get_absolute_url(self):
         return reverse('category_detail',kwargs={'slug':self.slug})
@@ -70,7 +70,7 @@ class Kitap(models.Model):
         return self.title
     def image_tag(self):
         return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
-    image_tag.short_decription = 'Image'
+    image_tag.short_description = 'Image'
 
     def get_absolute_url(self):
         return reverse('product_detail',kwargs={'slug':self.slug})
@@ -83,7 +83,7 @@ class Images(models.Model):
         return self.title
     def image_tag(self):
         return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
-    image_tag.short_decription = 'Image'
+    image_tag.short_description = 'Image'
 
 class Comment(models.Model):
     STATUS=(

@@ -14,7 +14,7 @@ def index(request):
 @login_required(login_url='login')
 def addcomment(request,id):
     url = request.META.get('HTTP_REFERER')
-    if request.method=='POST':
+    if request.method =='POST':
         form = CommentForm(request.POST)
         if form.is_valid():
             current_user=request.user

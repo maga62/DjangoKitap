@@ -1,0 +1,84 @@
+{% extends "homebase.html" %}
+    {% block title %}{{ profile.user_name }} COMMENTS {% endblock %}
+{% block keywords %}{{ setting.keywords }} {% endblock %}
+{% block description %}{{ setting.description }}  {% endblock %}
+
+{% block head %}<link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />{% endblock %}
+{% block sidebar %}
+{% include "sidebar.html" %}
+{% endblock %}
+
+
+{% block content %}
+<div class="breadcumb_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ol class="breadcrumb d-flex align-items-center">
+                    <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
+                    <li class="breadcrumb-item"><a href="/user/user_profile">COMMENTS </a></li>
+                </ol>
+                <!-- btn -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="single_product_details_area section_padding_0_100">
+    <div class="container">
+        <div class="row">
+            <div class="col-3 col-md-3">
+                <div class="row">
+                    <div class="col-md-12 mb-5">
+                        {% include "user_panel.html" %}
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-12 col-md-9">
+                <div><h3>COMMENTS LIST </h3></div>
+
+                <div class="cart-table clearfix">
+                    <table class="table table-responsive">
+
+                        <tr>
+
+                            <th class="text-left"><span>Product </span><hr></th>
+                            <th class="text-left"><span></span>RATE</span><hr> </th>
+                            <th class="text-left"><span>Subject </span><hr></th>
+                            <th class="text-left"><span>Comment</span><hr></th>
+                            <th class="text-left"><span>status</span><hr></th>
+                            <th class="text-left"><span>date</span><hr></th>
+                            <th class="text-left"><span>Detail</span><hr></th>
+
+
+                        </tr>
+                        {% for rs in comments %}
+                        <tr>
+
+                            <td class="text-left"><span>
+                                <a href="/kitap/{{rs.product_id}}/{{rs.product.slug}}">
+                                {{ rs.product.title}}
+                                </a>
+                            </span><hr></td>
+                            <td class="text-left">{{ rs.rate}}</td>
+                            <td class="text-left"><span>{{ rs.subject}}</span><hr> </td>
+                            <td class="text-left"><span>{{ rs.comment}} </span><hr></td>
+                            <td class="text-left"><span>{{ rs.status}} </span><hr></td>
+                            <td class="text-left"><span>{{ rs.created_at}} </span><hr></td>
+                            <td class="text-left"><button><a class="btn karl-checkout-btn" href="/user/deletecomment/{{ rs.id}}" onclick="return confirm('Ürün silinecektir.Emin misniz?)" >DELETE</a></button> </td>
+                        </tr>
+                        {% endfor %}
+
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

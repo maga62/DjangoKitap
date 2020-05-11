@@ -2,6 +2,13 @@
 
 
 <header class="header_area bg-img background-overlay-white" style="background-image: url({% static 'img/bg-img/header.jpg' %});">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" roles="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
     <!-- ****** Header Area Start ****** -->
     <header class="header_area">
         <!-- Top Header Area Start -->

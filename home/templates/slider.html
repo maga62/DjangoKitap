@@ -3,14 +3,14 @@
     <div class="welcome_slides owl-carousel">
         <!-- Single Slide Start -->
         {% for rs in sliderdata %}
-                <div class="single_slide height-800 bg-img background-overlay" style="background-image: url({{ rs.image.url }});">
+                <div class="single_slide height-800 bg-img background-overlay" style="background-image:  url({{ rs.image.url }}) ;">
                     <div class="container h-100">
                         <div class="row h-100 align-items-center">
                             <div class="col-12">
                                 <div class="welcome_slide_text">
                                     <h6 data-animation="bounceInDown" data-delay="0" data-duration="500ms">{{rs.description}}</h6>
                                     <h2 data-animation="fadeInUp" data-delay="500ms" data-duration="500ms">{{ rs.title }}<p>{{rs.yazar }} <br></h2>
-                                    <a href="/kitap/{{ rs.id }}/{{ rs.slug }}/{{ rs.title }}" class="btn karl-btn" data-animation="fadeInUp" data-delay="1s" data-duration="500ms">Hemen Al</a>
+                                    <a href="/kitap/{{ rs.id }}/{{ rs.slug }}" class="btn karl-btn" data-animation="fadeInUp" data-delay="1s" data-duration="500ms">Hemen Al</a>
                                 </div>
                             </div>
                         </div>

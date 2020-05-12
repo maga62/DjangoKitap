@@ -38,7 +38,7 @@
                                 <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.2s">
                                     <!-- Product Image -->
                                     <div class="product-img">
-                                        <img src="{{ rs.image.url }}" alt="" style="height: 250px">
+                                       <img src="{{ rs.image.url }}" alt="" style="height: 250px">
                                         <div class="product-quicview">
                                             <a href="/kitap/{{ rs.id }}/{{ rs.slug }}" data-target="#quickview"><i class="ti-plus"></i></a>
                                         </div>
@@ -46,7 +46,8 @@
                                     <!-- Product Description -->
                                     <div class="product-description">
                                         <h4 class="product-price">Stok: {{ rs.stok_durum }}</h4>
-                                        <a href="/book/{{ rs.id }}/{{ rs.slug }}"><p>{{ rs.title }}</p></a>
+                                        <h4 class="product-price">FIYAT: {{ rs.fiyat }}</h4>
+                                        <a href="/kitap/{{ rs.id }}/{{ rs.slug }}"><p>{{ rs.title }}</p></a>
                                         <!-- Add to Cart -->
                                         <a href="/order/addtocart/{{ rs.id }}" class="add-to-cart-btn">SEPETE EKLE</a>
                                     </div>

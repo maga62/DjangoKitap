@@ -1,6 +1,4 @@
 {% load static %}
-
-
 <header class="header_area bg-img background-overlay-white" style="background-image: url({% static 'img/bg-img/header.jpg' %});">
     {% if messages %}
         {% for message in messages %}
@@ -14,7 +12,7 @@
         <!-- Top Header Area Start -->
         <div class="top_header_area">
             <div class="container h-100">
-                <div>
+                <div >
                     <div class="header-social-area col-12 col-lg-7">
                         <a href="#"><span class="karl-level">Share</span> <i class="fa fa-pinterest" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -113,10 +111,10 @@
                                                 <a class="dropdown-item" href="checkout.html">Checkout</a>
                                             </div>
                                         </li>-->
-                                        <li class="nav-item"><a class="nav-link" href="/kitaplar">Kitaplar</a></li>
+                                        <a class="list-group-item" href="/kitaplar"><i class="fa fa-book" aria-hidden="true"></i>KITAPLAR</a>
                                         <a class="list-group-item" href="/hakkimizda"><i class="fa fa-address-card-o" aria-hidden="true"></i>&nbsp; Hakkimizda</a>
-                                        <li class="nav-item"><a class="nav-link" href="/referanslar"><i class="fa fa-address-card-o" aria-hidden="true"></i>Referanslar</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/iletisim">İletİşİm</a></li>
+                                        <li class="nav-item"><a class="list-group-item" href="/referanslar"><i class="fa fa-address-card-o" aria-hidden="true"></i>Referanslar</a></li>
+                                        <li class="nav-item"><a class="list-group-item" href="/iletisim">İletİşİm</a></li>
                                     </ul>
                                 </div>
                             </nav>

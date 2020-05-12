@@ -1,0 +1,51 @@
+{% extends "homebase.html" %}
+{% block title %}sikca sorulan sorular  {% endblock %}
+{% block keywords %}{% endblock %}
+{% block description %}  {% endblock %}
+
+{% block head %}<link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+  <script>
+  $( function() {
+    $( "#accordion" ).accordion();
+  } );
+  </script>
+{% endblock %}
+{% block sidebar %}
+{% include "sidebar.html" %}
+{% endblock %}
+
+
+{% block content %}
+<div class="breadcumb_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ol class="breadcrumb d-flex align-items-center">
+                    <li class="breadcrumb-item"><a href="/">Anasayfa</a></li>
+                    <li class="breadcrumb-item">SSS</li>
+                </ol>
+                <!-- btn -->
+            </div>
+        </div>
+    </div>
+</div>
+<section class="single_product_details_area section_padding_0_100">
+    <div class="container">
+        <div class="row">
+
+            <div id="accordion">
+                {% for rs in faq %}
+                <h3>{{rs.question}}</h3>
+                <div>
+                    <p>
+                        {{rs.answer}}
+
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

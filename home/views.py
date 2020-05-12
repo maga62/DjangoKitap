@@ -10,7 +10,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from home.forms import SearchForm, SignUpForm
-from home.models import Setting, ContactFormu, ContactFormMessage
+from home.models import Setting, ContactFormu, ContactFormMessage, FAQ
 from kitap.models import Kitap, Category, Images, Comment
 from order.models import ShopCart
 
@@ -179,3 +179,14 @@ def kitaplar(request):
         'category': category,
     }
     return render(request, 'kitapmenu.html', context)
+
+
+def faq(request):
+    category = Category.objects.all()
+    faq = FAQ.objects.all().order_by('ordernumber')
+    context = {
+
+        'faq':faq,
+        'category': category,
+    }
+    return render(request, 'faq.html', context)

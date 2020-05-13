@@ -10,7 +10,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from home.forms import SearchForm, SignUpForm
-from home.models import Setting, ContactFormu, ContactFormMessage, FAQ
+from home.models import Setting, ContactFormu, ContactFormMessage, FAQ, UserProfile
 from kitap.models import Kitap, Category, Images, Comment
 from order.models import ShopCart
 
@@ -158,8 +158,13 @@ def signup_view(request):
             password = request.POST['password']
             user = authenticate( username=username, password=password)
             login(request, user)
+            current_user=request.user
+            data=UserProfile()
+            data.user_id=current_user.id
+            data.image="images/users/icon.jpg"
+            data.save()
+            messages.success(request, "Tebrikler sistemimize Uye oldunuz! ")
             return HttpResponseRedirect('/')
-
 
     form = SignUpForm()
     category = Category.objects.all()

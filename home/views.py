@@ -155,8 +155,8 @@ def signup_view(request):
         if form.is_valid():
             form.save()
             username = request.POST['username']
-            password = request.POST['password']
-            user = authenticate( username=username, password=password)
+            password = request.POST['password1']
+            user = authenticate(request, username=username, password=password)
             login(request, user)
             current_user=request.user
             data=UserProfile()

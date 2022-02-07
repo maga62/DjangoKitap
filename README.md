@@ -5,10 +5,6 @@ This project is a multilingual and multi-currency e-commerce Python Djnago web p
 
 
 
-Web Template of this prpoject: https://colorlib.com/wp/template/e-shop/
-
-
-
 Before running this project you need intall below list apps and packages
 
 Install Python 3.7 or above -> https://www.python.org/
